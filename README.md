@@ -3,6 +3,7 @@
 # # Java-Spring(Backend)+AngularJS(Frontend)
 EClinic Web Application for Examination Appointment -- upgraded version with Auth0 and JasperReports
 
+![login_screen](https://user-images.githubusercontent.com/60583122/159390305-31ea32e5-653e-476c-b624-a02dc649c022.jpg)
 
 EClinic Web Application Project for MSc studies on Faculty of Organizational Sciences
 
@@ -19,4 +20,4 @@ When using a web application, the user (doctor or patient) first logs in to the 
 The software system should enable the user (doctor) to view, add, and delete user data, as well as data on their own scheduled examinations.
 The software system should allow the user (patient) to view user data, as well as data on their own scheduled examinations.
 After the user has scheduled the review, the software system will confirm the successfully scheduled review and display the list of their own scheduled reviews again.
-# Finally he can open report he made, and can send himself e-mail address for that specific appointment (pdf format).
+Finally he can open report he made, and can send himself e-mail address for that specific appointment (pdf format).
