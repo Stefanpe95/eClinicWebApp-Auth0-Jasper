@@ -1,0 +1,51 @@
+<div class="col-md-6 offset-md-3 row">
+  <p></p>
+  <h3 class="text-center"><b>Update Appointment</b></h3>
+
+  <form [formGroup]="AppointmentForm" (submit)="onSubmit()">
+
+    <div class="form-group">
+      <textarea type="text" class="form-control" id="appointment_note" required
+        [(ngModel)]="appointmentadd.appointment_note" placeholder="Note" name="appointment_note"
+        formControlName="AppointmentNote"></textarea>
+      <p></p>
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <input type="text" class="form-control" id="date" required [(ngModel)]="appointmentadd.date" name="date"
+        [ngxMatDatetimePicker]="picker" [ngxMatDatetimePickerFilter]="myFilter" placeholder="Choose a date"
+        [min]="minDate" [max]="maxDate" formControlName="Date" readonly (click)="picker.open()">
+      <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [stepHour]="stepHour" [stepMinute]="stepMinute"
+        [touchUi]="touchUi" [enableMeridian]="enableMeridian">
+      </ngx-mat-datetime-picker>
+    </div>
+    <p></p>
+    <p></p>
+
+    <div class=" d-flex justify-content flex-column form-group">
+      <label>Doctor</label>
+      <p></p>
+      <select [formControl]="DoctorValidation" formControlName="Doctor" (change)="selectOptionDoctor($event)"
+        [(ngModel)]="doctor">
+        <option *ngFor="let doctor of doctors" [value]="doctor.doctorid">{{doctor.speciality}}</option>
+      </select>
+    </div>
+
+    <div class="d-flex justify-content flex-column form-group">
+      <label>Patient</label>
+      <p></p>
+      <select [formControl]="PatientValidation" formControlName="Patient" (change)="selectOptionPatient($event)"
+        [(ngModel)]="patient">
+        <option *ngFor="let patient of patients" [value]="patient.patientid">{{patient.patientPID}}</option>
+      </select>
+      <p></p>
+    </div>
+    <p></p>
+    <div class="d-flex justify-content">
+      <p></p>
+      <button class="btn btn-outline-success col text-center btn-lg" type="submit">UPDATE</button>
+      <button class="btn btn-outline-danger col text-center btn-lg" (click)="redirectToHome()">BACK</button>
+    </div>
+    <p></p>
+
+  </form>
+
+</div>

@@ -1,0 +1,59 @@
+<div class="col-md-12 justify-content-center">
+
+  <h3 class="text-center"><b>Appointment List</b> </h3>
+
+  <h3 *ngIf="appointments.length === 0 ">
+    <h3 class="text-center"><b>No Appointments Found!</b></h3>
+  </h3>
+
+  <p></p>
+
+  <table [hidden]="appointments.length === 0 " class="table table-hover table-lg border-info">
+    <thead>
+
+      <tr class="table-primary align-middle" style="text-align: center;">
+        <th [hidden]="keyRole == 'user'" scope="col">Appointment ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Appointment Note</th>
+        <th scope="col">Doctor PID</th>
+        <th scope="col">Patient PID</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let appointment of appointments | paginate: {itemsPerPage: pageSize, currentPage: page,totalItems:count}"
+        class="table-primary" style="text-align: center;">
+        <td [hidden]="keyRole == 'user'" scope="row">{{appointment.appointmentID}}</td>
+        <td scope="row">{{appointment.date | date:'dd/MM/yyyy, HH:mm:ss'}}</td>
+        <td scope="row"><textarea disabled>{{appointment.appointment_note}}</textarea></td>
+        <td scope="row">{{appointment.doctor?.doctorPID}}</td>
+        <td scope="row">{{appointment.patient?.patientPID}}</td>
+        <td [hidden]="keyRole == 'user'" scope="row">
+          <button (click)="updateAppointment(appointment.appointmentID)" class="btn btn-outline-primary">Update</button>
+          <button (click)="deleteAppointment(appointment.appointmentID)" class="btn btn-outline-danger">Delete</button>
+          <button (click)="reportAppointment(appointment.appointmentID)" class="btn btn-outline-dark">Report</button>
+        </td>
+        <td [hidden]="keyRole == 'admin'" scope="row">
+          <button (click)="reportAppointment(appointment.appointmentID)" class="btn btn-outline-dark">Report</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="col-md-12 pagination justify-content-center">
+    <div>
+      <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+        (pageChange)="handlePageChange($event)"></pagination-controls>
+    </div>
+    <div>
+      Items per Page:
+      <select [disabled]=true (change)="handlePageSizeChange($event)">
+        <option *ngFor="let size of pageSizes" ngValue="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+</div>

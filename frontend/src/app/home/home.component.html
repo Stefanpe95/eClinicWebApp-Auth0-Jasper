@@ -1,0 +1,30 @@
+<div class="d-flex flex-row justify-content-between">
+    <div class="d-flex flex-column">
+        <button class="btn  btn-outline-primary" style="width: 200px;" (click)="dataInfo()">DATA
+            INFO(UPDATE)</button>
+        <button class="btn btn-outline-info" style="width: 200px;" (click)="listofAppointments()">LIST OF
+            APPOINTMENTS</button>
+        <button class="btn btn-outline-warning" style="width: 200px;" (click)="scheduleAppointment()">SCHEDULE
+            APPOINTMENT</button>
+    </div>
+
+    <div [ngSwitch]="index">
+        <div *ngSwitchCase="1">
+            <app-update-user #updateUserComponent></app-update-user>
+        </div>
+        <div *ngSwitchCase="2">
+            <app-appointment-list #appointmentListComponent></app-appointment-list>
+        </div>
+        <div *ngSwitchCase="3">
+            <app-add-appointment #addAppointmentComponent></app-add-appointment>
+        </div>
+        <div *ngSwitchDefault></div>
+    </div>
+
+    <div class="d-flex flex-column float-end">
+        <p style="font-weight: 800;">WELCOME, {{flagRole}}</p>
+        <p style="font-weight: 400;">{{clinicUser.email}}</p>
+        <button class="btn btn-outline-danger" (click)="logout()">LOGOUT</button>
+    </div>
+
+</div>

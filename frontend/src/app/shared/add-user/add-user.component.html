@@ -1,0 +1,68 @@
+<div class="col-md-6 offset-md-3 row">
+    <h3 class="text-center"><b>ADD NEW USER</b></h3>
+
+    <form [formGroup]="UserForm" (submit)="onSubmit()">
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="email" required [(ngModel)]="useradd.email" placeholder="email"
+                name="email" formControlName="EMail">
+
+        </div>
+        <p></p>
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" required [(ngModel)]="useradd.name" placeholder="Name"
+                name="name" formControlName="Name">
+
+        </div>
+        <p></p>
+
+
+        <div class="d-flex justify-content flex-column form-group">
+            <label>Role</label>
+            <p></p>
+
+            <select [formControl]="RoleValidation" formControlName="Role" (change)="selectOptionRole($event)" required>
+                <option *ngFor="let role of roles" [value]="role.roleid">{{role.roleid}} > {{role.roleName}}</option>
+            </select>
+
+            <p></p>
+
+
+        </div>
+
+        <div class="d-flex justify-content flex-column form-group" *ngIf="role != 2">
+            <label>Doctor</label>
+            <p></p>
+            <select [formControl]="DoctorValidation" (change)="selectOptionDoctor($event)" [(ngModel)]="doctor">
+                <option *ngFor="let doctor of doctors" [value]="doctor.doctorid">{{doctor.doctorid}} --
+                    {{doctor.doctorPID}} > {{doctor.speciality}}</option>
+            </select>
+
+        </div>
+        <p></p>
+        <div class="d-flex justify-content flex-column form-group" *ngIf="role != 1">
+            <label>Patient</label>
+            <p></p>
+            <select [formControl]="PatientValidation" (change)="selectOptionPatient($event)" [(ngModel)]="patient">
+                <option *ngFor="let patient of patients" [value]="patient.patientid">{{patient.patientid}} ---------
+                    {{patient.patientPID}} -- {{patient.gender}}</option>
+            </select>
+
+
+        </div>
+        <p></p>
+        <div class="col-md-6 ">
+            <div *ngIf="error!==''">
+                {{error}}
+            </div>
+            <p [hidden]="UserForm.valid" style="text-decoration-color: red;">Please complete all needed data.</p>
+            <p></p>
+            <button class="btn btn-success col text-center" type="submit" [hidden]="!UserForm.valid">Submit</button>
+        </div>
+        <p></p>
+
+    </form>
+
+
+
+</div>

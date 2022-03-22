@@ -1,0 +1,19 @@
+<h2>Patients List </h2>
+
+<p></p>
+<table class="table table-hover table-lg border-info">
+    <thead>
+        <tr class="table-primary align-middle" style="text-align: center;">
+            <th scope="col">Patient PID</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Bloodtype</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let patient of patients" class="table-primary" style="text-align: center;">
+            <td scope="row">{{patient.patientPID}}</td>
+            <td scope="row">{{patient.gender}}</td>
+            <td scope="row">{{patient.bloodtype}}</td>
+        </tr>
+    </tbody>
+</table>

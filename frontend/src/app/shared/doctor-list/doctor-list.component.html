@@ -1,0 +1,19 @@
+<h2>Doctor List </h2>
+
+<p></p>
+<table class="table table-hover table-lg border-info">
+    <thead>
+        <tr class="table-primary align-middle" style="text-align: center;">
+            <th scope="col">Doctor PID</th>
+            <th scope="col">Speciality</th>
+            <th scope="col">Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let doctor of doctors" class="table-primary" style="text-align: center;">
+            <td scope="row">{{doctor.doctorPID}}</td>
+            <td scope="row">{{doctor.speciality}}</td>
+            <td scope="row">{{doctor.department?.name}}</td>
+        </tr>
+    </tbody>
+</table>

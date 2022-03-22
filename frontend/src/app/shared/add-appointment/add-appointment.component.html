@@ -1,0 +1,72 @@
+<div class="col-md-6 offset-md-3 row">
+  <p></p>
+  <h3 class="text-center"><b>SCHEDULE AN APPOINTMENT</b></h3>
+
+  <form [formGroup]="AppointmentForm" (submit)="onSubmit()">
+
+    <div class="form-group">
+      <textarea type="text" class="form-control" id="appointment_note" line-height="2em" minlength="20" required
+        [(ngModel)]="appointmentadd.appointment_note" placeholder="Note" name="appointment_note"
+        formControlName="AppointmentNote"></textarea>
+      <div class="alert alert-danger" *ngIf="AppointmentForm.controls['AppointmentNote'].hasError('minlength')">
+        {{errorNote}}
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="appointmentadd.appointment_note == null || appointmentadd.appointment_note!.length == 0">
+        {{errorNote}}
+      </div>
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <input type="text" class="form-control" id="date" [ngxMatDatetimePicker]="picker"
+        [ngxMatDatetimePickerFilter]="myFilter" placeholder="Choose a date" [min]="minDate" [max]="maxDate" required
+        [(ngModel)]="appointmentadd.date" name="date" formControlName="Date" readonly (click)="picker.open()">
+      <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [stepHour]="stepHour" [stepMinute]="stepMinute"
+        [touchUi]="touchUi" [enableMeridian]="enableMeridian">
+      </ngx-mat-datetime-picker>
+      <div class="alert alert-danger" *ngIf="appointmentadd.date?.getDay() == 0 || appointmentadd.date?.getDay() == 6">
+        {{error}}
+      </div>
+      <div class="alert alert-danger" *ngIf="hourCheck > 8 || hourCheck < 18">
+        {{error2}}
+      </div>
+    </div>
+    <p></p>
+
+    <div class="d-flex justify-content flex-column form-group">
+      <label>Doctor PID</label>
+      <p></p>
+      <select [formControl]="DoctorValidation" formControlName="Doctor" (change)="selectOptionDoctor($event)"
+        [(ngModel)]="doctor">
+        <option *ngFor="let doctor of doctors" [value]="doctor.doctorid">{{doctor.doctorPID}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="appointmentadd.doctorid == null">
+        {{errorDoctorID}}
+      </div>
+
+    </div>
+    <p></p>
+    <div class="d-flex justify-content flex-column form-group">
+      <label>Patient PID</label>
+      <p></p>
+      <select [formControl]="PatientValidation" formControlName="Patient" (change)="selectOptionPatient($event)"
+        [(ngModel)]="patient">
+        <option *ngFor="let patient of patients" [value]="patient.patientid">{{patient.patientPID}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="appointmentadd.patientid == null">
+        {{errorPatientID}}
+      </div>
+    </div>
+    <p></p>
+    <div class="d-flex justify-content">
+      <p class="alert alert-danger" [hidden]="AppointmentForm.valid" style="text-emphasis-color: red;">Please complete
+        all needed data.</p>
+      <p></p>
+      <button class="btn btn-outline-success col text-center btn-lg" type="submit"
+        [hidden]="!AppointmentForm.valid">SCHEDULE YOUR APPOINTMENT</button>
+    </div>
+    <p></p>
+
+  </form>
+
+
+
+</div>
