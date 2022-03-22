@@ -1,5 +1,8 @@
 # EclinicWebApp ANGULAR
 
+![login_screen](https://user-images.githubusercontent.com/60583122/159390305-31ea32e5-653e-476c-b624-a02dc649c022.jpg)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
 ## Development server
