@@ -1,6 +1,6 @@
 
-# # eClinicWebApp-Auth0-Jasper 
-# # Java-Spring(Backend)+AngularJS(Frontend)
+# eClinicWebApp-Auth0-Jasper 
+# Java-Spring(Backend)+AngularJS(Frontend)
 EClinic Web Application for Examination Appointment -- upgraded version with Auth0 and JasperReports
 
 ![login_screen](https://user-images.githubusercontent.com/60583122/159390305-31ea32e5-653e-476c-b624-a02dc649c022.jpg)
