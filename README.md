@@ -7,7 +7,7 @@ EClinic Web Application for Examination Appointment -- upgraded version with Aut
 
 EClinic Web Application Project for MSc studies on Faculty of Organizational Sciences
 
-![architecture](https://user-images.githubusercontent.com/60583122/159389943-135112f5-4524-422c-8608-be1523807dbf.png)
+![architecture](https://user-images.githubusercontent.com/60583122/159797437-e3c74b8b-ba35-4ecb-865a-22c6757e7bad.png)
 
 Backend Model in MySQL
 
